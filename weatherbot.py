@@ -28,9 +28,11 @@ model = OpenAIModel(
     'google/gemini-2.0-flash-lite-001',
     provider=OpenAIProvider(
         base_url='https://openrouter.ai/api/v1',
-        #api_key=os.getenv('OPENROUTER_API_KEY'),
-        api_key=os.getenv("OPENROUTER_API_KEY"),
-        http_client=httpx.AsyncClient(verify=False)
+        api_key="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",
+        http_client=httpx.AsyncClient(
+            verify=False,
+            headers={"HTTP-Referer": "https://github.com/your-repo"}
+        )
     ),
 )
 
