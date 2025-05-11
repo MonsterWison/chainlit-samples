@@ -2,7 +2,8 @@ from openai import AsyncOpenAI
 import os
 import chainlit as cl
 import httpx
-from pydantic_ai import Agent, RunContext
+from typing import Any
+from pydantic_ai import Agent, RunContext, ModelRetry
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 from dataclasses import dataclass
@@ -16,8 +17,8 @@ class Deps:
 # Initialize the OpenAI client for Chainlit
 client = AsyncOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY"),
-    http_client=httpx.AsyncClient(verify=False)
+    api_key="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",
+    #http_client=httpx.AsyncClient(verify=False)
 )
 
 # Initialize the model for weather agent
@@ -25,7 +26,7 @@ model = OpenAIModel(
     'google/gemini-2.0-flash-lite-001',
     provider=OpenAIProvider(
         base_url='https://openrouter.ai/api/v1',
-        api_key=os.getenv("OPENROUTER_API_KEY"),
+        api_key="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",
         http_client=httpx.AsyncClient(verify=False)
     ),
 )
