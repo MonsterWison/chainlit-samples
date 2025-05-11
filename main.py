@@ -2,7 +2,7 @@ from openai import AsyncOpenAI
 import os
 import chainlit as cl
 import httpx
-from pydantic_ai import Agent, ModelRetry, RunContext
+from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 from dataclasses import dataclass
@@ -47,7 +47,7 @@ weather_agent = Agent(
 cl.instrument_openai()
 
 settings = {
-    "model": "deepseek/deepseek-r1",
+    "model": "google/gemini-2.0-flash-lite-001",
     "temperature": 0,
 }
 
