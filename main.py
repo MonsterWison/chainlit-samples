@@ -5,9 +5,6 @@ import os
 from dotenv import load_dotenv
 import chainlit as cl
 
-# Load environment variables from .env file
-load_dotenv()
-
 provider = OpenAIProvider(
     api_key=os.getenv("OPENROUTER_API_KEY")
 )
