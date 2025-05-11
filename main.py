@@ -14,7 +14,7 @@ client = AsyncOpenAI(
 cl.instrument_openai()
 
 settings = {
-    "model": "google/gemini-2.0-flash-lite-001",
+    "model": "deepseek/deepseek-r1",
     "temperature": 0,
     # ... more settings
 }
