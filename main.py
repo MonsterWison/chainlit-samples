@@ -2,16 +2,19 @@ from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 import os
+from dotenv import load_dotenv
 import chainlit as cl
-import httpx
+
+# Load environment variables from .env file
+load_dotenv()
+
+provider = OpenAIProvider(
+    api_key=os.getenv("OPENROUTER_API_KEY")
+)
 
 model = OpenAIModel(
-    'google/gemini-2.0-flash-lite-001',
-    client=OpenAIProvider(
-        base_url='https://openrouter.ai/api/v1',
-        api_key=os.getenv("OPENROUTER_API_KEY"),
-        http_client=httpx.AsyncClient(verify=False)
-    ),
+    model_name='gpt-3.5-turbo',
+    provider=provider
 )
 
 chat_agent = Agent(
